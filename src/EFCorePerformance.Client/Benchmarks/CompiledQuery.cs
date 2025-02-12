@@ -9,7 +9,7 @@ namespace EFCorePerformance.Client.Benchmarks;
 public class CompiledQuery
 {
     private static Func<ApplicationDbContext, IAsyncEnumerable<Product>> _compiledQuery
-        => EF.CompileAsyncQuery((ApplicationDbContext dbContext) => dbContext.Products.Where(p => p.Url.StartsWith("https://")).AsNoTracking());
+        => EF.CompileAsyncQuery((ApplicationDbContext dbContext) => dbContext.Products.Where(p => p.Url.StartsWith("https://")));
 
     private ApplicationDbContext _dbContext;
 
@@ -46,7 +46,7 @@ public class CompiledQuery
     {
         var selectedRatedProductIds = new List<int>();
 
-        await foreach (var product in _dbContext.Products.Where(p => p.Url.StartsWith("https://")).AsNoTracking().AsAsyncEnumerable())
+        await foreach (var product in _dbContext.Products.Where(p => p.Url.StartsWith("https://")).AsAsyncEnumerable())
         {
             selectedRatedProductIds.Add(product.Id);
         }

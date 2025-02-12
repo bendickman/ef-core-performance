@@ -9,7 +9,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Product> Products { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MyStore;Trusted_Connection=True;ConnectRetryCount=0");
+        => optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MyStore;Trusted_Connection=True;ConnectRetryCount=0")
+            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 
     public async Task SeedData(
         int numberOfProducts)
