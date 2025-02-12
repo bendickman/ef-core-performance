@@ -14,7 +14,8 @@ public class ProductFaker
             .RuleFor(p => p.Name, f => f.Commerce.Product())
             .RuleFor(p => p.Description, f => f.Random.Words(10))
             .RuleFor(p => p.Rating, f => f.Random.Int(1, 100))
-            .RuleFor(p => p.CreatedDateTime, f => f.Date.Past());
+            .RuleFor(p => p.CreatedDateTime, f => f.Date.Past())
+            .RuleFor(p => p.Url, f => f.Internet.Url());
     }
 
     public IEnumerable<Product> Generate(

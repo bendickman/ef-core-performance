@@ -13,4 +13,6 @@ public class Product
     public DateTime? UpdatedDateTime { get; init; }
 
     public int Rating { get; init; }
+
+    public string Url { get; init; } = string.Empty;
 }
